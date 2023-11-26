@@ -1,1 +1,77 @@
-<p>view works!</p>
+<header *ngIf="selectedForecast">
+  <!-- filter consist of text and date inputs -->
+  <div class="filter w-100">
+    <app-filter
+      [citiesList]="citiesList"
+      (applyFiltration)="setFilteredValues($event)"
+    ></app-filter>
+  </div>
+</header>
+
+<section *ngIf="selectedForecast">
+  <!-- city name -->
+  <div class="d-flex flex-column align-items-center py-4">
+    <div class="city-info" *ngIf="selectedCity">{{ selectedCity.city }}</div>
+
+    <!-- date -->
+    <div class="date-info">
+      {{ selectedForecast.date | date : "fullDate" }}
+    </div>
+
+    <!-- condition icon (cloudy, rainy, etc..)-->
+    <div class="condition-icon-container d-flex justify-content-center">
+      <i
+        class="ri-cloudy-line"
+        [ngClass]="
+          selectedForecast.temperatureCelsius > 24
+            ? 'hot'
+            : selectedForecast.temperatureCelsius < 16
+            ? 'cold'
+            : 'moderate'
+        "
+      ></i>
+    </div>
+
+    <!-- degree  -->
+    <div
+      class="degree-container d-flex justify-content-around align-items-center mb-5"
+    >
+      <div>
+        <span class="degree">
+          {{
+            degreeType
+              ? selectedForecast.temperatureFahrenheit
+              : selectedForecast.temperatureCelsius
+          }}
+        </span>
+        <span
+          ><i
+            [ngClass]="degreeType ? 'ri-fahrenheit-line' : 'ri-celsius-line'"
+          ></i
+        ></span>
+      </div>
+
+      <!-- degree switcher -->
+      <div class="toggler d-flex justify-content-center">
+        <label class="switch">
+          <input type="checkbox" (change)="degree($event)" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="condition">
+      <p>Cloudy</p>
+    </div>
+
+    <!-- horizontal line -->
+    <div class="line-break"></div>
+  </div>
+</section>
+
+<footer *ngIf="selectedForecast">
+  <!-- cards of features (humidity, etc..) -->
+  <div class="weather-info-card w-100 px-2">
+    <app-info-card [weatherInfo]="selectedForecast"></app-info-card>
+  </div>
+</footer>
