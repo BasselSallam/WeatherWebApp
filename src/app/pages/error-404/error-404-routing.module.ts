@@ -3,15 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
-    path: 'home',
-    component: ViewComponent,
-  },
+    path:'',
+    component:ViewComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class WeatherRoutingModule {}
+export class Error404RoutingModule { }
