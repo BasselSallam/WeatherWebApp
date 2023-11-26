@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { WeatherRoutingModule } from './weather-routing.module';
+import { Error404RoutingModule } from './error-404-routing.module';
 import { ViewComponent } from './view/view.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -12,8 +11,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    WeatherRoutingModule,
-    SharedModule
+    Error404RoutingModule
   ]
 })
-export class WeatherModule { }
+export class Error404Module { }
