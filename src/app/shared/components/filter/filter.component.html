@@ -1,0 +1,37 @@
+<form [formGroup]="filterForm" (submit)="applyFilter()">
+  <div
+    class="filter-container w-100 d-flex justify-content-center align-items-center"
+  >
+    <div class="search">
+      <input
+        class="form-control w-100"
+        list="datalistOptions"
+        id="city"
+        placeholder="Search for city..."
+        formControlName="city"
+      />
+
+      <datalist id="datalistOptions">
+        <option *ngFor="let data of citiesList" [value]="data.city"></option>
+      </datalist>
+    </div>
+
+    <div class="date-picker">
+      <input id="date" class="w-100" type="date" formControlName="date" />
+    </div>
+
+    <div class="submit">
+      <app-button
+        [button]="{ name: 'Search', class: 'btn btn-success', type: 'submit' }"
+      ></app-button>
+    </div>
+
+    <div class="reset">
+      <app-button
+        [button]="{ name: 'Reset', class: 'btn btn-secondary', type: 'button' }"
+        (click)="reset()"
+      ></app-button>
+    </div>
+    
+  </div>
+</form>
