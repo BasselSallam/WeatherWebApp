@@ -1,0 +1,14 @@
+.weather-info-card {
+  padding: 20px;
+  border-radius: 20px;
+  color: #fff;
+  background: #95a5a6;
+
+  .title{
+    opacity: 0.8;
+  }
+
+  .value{
+    font-size: 20px;
+  }
+}
